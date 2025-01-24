@@ -1,0 +1,33 @@
+﻿@page
+@model QuizWebApp.Pages.Quiz.ResultsModel
+@{
+    ViewData["Title"] = "Quiz Results";
+}
+
+<!-- UIkit CSS -->
+<link rel="stylesheet" href="~/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="~/js/uikit.min.js"></script>
+<script src="~/js/uikit-icons.min.js"></script>
+
+<h1>Quiz Results</h1>
+
+<div class="table-div" style="width: 800px">
+    <table class="uk-table-striped uk-table-hover uk-overflow-auto" id="QuizResultTable" style="width: 800px">
+        <tr>
+            <th>@Html.DisplayNameFor(Model => Model.results[0].UserName)</th>
+            <th>@Html.DisplayNameFor(Model => Model.results[0].QuizDate)</th>
+            <th>@Html.DisplayNameFor(Model => Model.results[0].Score)</th>
+        </tr>
+        @foreach (var result in Model.results)
+        {
+            <tr>
+                <td>@result.UserName</td>
+                <td>@result.QuizDate</td>
+                <td>@result.Score</td>
+            </tr>
+        }
+        
+    </table>
+</div>

@@ -1,0 +1,32 @@
+﻿@page
+@model QuizWebApp.Pages.Quiz.IndexModel
+@{
+    ViewData["Title"] = "QuizSelection";
+}
+
+<!-- UIkit CSS -->
+<link rel="stylesheet" href="~/css/uikit.min.css" />
+
+<!-- UIkit JS -->
+<script src="~/js/uikit.min.js"></script>
+<script src="~/js/uikit-icons.min.js"></script>
+
+<h1>Quiz Selection</h1>
+
+<div class="table-div" style="width: 800px">
+    <table class="uk-table-striped uk-table-hover uk-overflow-auto" id="quizTable" style="width: 800px">
+        <tr>
+            <th>@Html.DisplayNameFor(Model => Model.quizzes[0].QuizID)</th>
+            <th>@Html.DisplayNameFor(Model => Model.quizzes[0].Name)</th>
+            <th>@Html.DisplayNameFor(Model => Model.quizzes[0].Description)</th>
+        </tr>
+        @foreach (var quiz in Model.quizzes)
+        {
+            <tr>
+                <td><a class="uk-link-reset" asp-page="./TakeQuiz" asp-route-id="@quiz.QuizID">@quiz.QuizID</a></td>
+                <td><a class="uk-link-reset" asp-page="./TakeQuiz" asp-route-id="@quiz.QuizID">@quiz.Name</a></td>
+                <td><a class="uk-link-reset" asp-page="./TakeQuiz" asp-route-id="@quiz.QuizID">@quiz.Description</a></td>
+            </tr>            
+        }        
+    </table>
+</div>

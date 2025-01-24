@@ -1,0 +1,35 @@
+﻿@page
+@model QuizWebApp.Pages.Quiz.TakeQuizModel
+@{
+}
+
+<!-- Take Quiz CSS -->
+<link rel="stylesheet" href="~/css/TakeQuiz.css" />
+
+<body>
+    <main>
+        <form method="post" style="align-content: center">
+            @Html.HiddenFor(m => m.quizID)
+            @foreach (var question in Model.questions)
+            {
+                <p><b>@question.Text</b></p>
+
+                @foreach (var answer in Model.answers)
+                {
+                    if(answer.QuestionID == question.QuestionID)
+                    {
+                        <input type="radio" name="@answer.AnswerID" value="@answer.Text">
+                        <label for="@answer.Text">@answer.Text</label>
+                    }
+                    
+                }
+                <br /><br />
+            }
+            
+            <div>
+                <input type="submit" value="Submit Quiz">
+            </div>
+        </form>        
+    </main>
+</body>
+
